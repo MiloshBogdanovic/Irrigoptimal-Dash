@@ -16,9 +16,23 @@ demo = {
   },
 
   generateDataSetsArray: function(data){
-    let dataSet;
+    let dataSets = [];
     for(var prop in data){
-      
+      let numberOfFields = Object.keys(prop).length;
+      dataSet.push({
+        label: "1",
+        borderColor: "#f96332",
+        pointBorderColor: "#FFF",
+        pointBackgroundColor: "#f96332",
+        pointBorderWidth: 2,
+        pointHoverRadius: 4,
+        pointHoverBorderWidth: 1,
+        pointRadius: 4,
+        fill: true,
+        backgroundColor: gradientFill,
+        borderWidth: 2,
+        data: [prop[1]]
+      })
     }
   },
 
