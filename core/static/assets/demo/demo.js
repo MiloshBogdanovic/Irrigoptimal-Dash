@@ -15,7 +15,7 @@ demo = {
     });
   },
 
-  generateLabelAndDataSetArrays: function(dataArray){
+  generateLabelAndDataSetArrays: async function(dataArray){
     let timeLabels = [];
     let dataSets = [];
 
@@ -39,8 +39,8 @@ demo = {
       return {timeLabels: timeLabels, dataSets: dataSets}
   },
 
-  getKPAChartData: function(){
-    gradientChartOptionsConfiguration = {
+  getKPAChartData: async function(){
+    gradientKPAChartOptionsConfiguration = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -113,7 +113,7 @@ demo = {
       type: 'line',
       responsive: true,
       data: data,
-      options: gradientChartOptionsConfiguration
+      options: gradientKPAChartOptionsConfiguration
     });
   },
 
@@ -122,6 +122,18 @@ demo = {
 
     // General configuration for the charts with Line gradientStroke
     gradientChartOptionsConfiguration = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -211,6 +223,18 @@ demo = {
   initDashboardPageCharts: function() {
 
     gradientChartOptionsConfigurationWithTooltipBlue = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -259,6 +283,18 @@ demo = {
     };
 
     gradientChartOptionsConfigurationWithTooltipPurple = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -307,6 +343,18 @@ demo = {
     };
 
     gradientChartOptionsConfigurationWithTooltipOrange = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -355,6 +403,18 @@ demo = {
     };
 
     gradientChartOptionsConfigurationWithTooltipGreen = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -404,6 +464,18 @@ demo = {
 
 
     gradientBarChartConfiguration = {
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'xy'
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy'
+          }
+        }
+      },
       maintainAspectRatio: false,
       legend: {
         display: false
