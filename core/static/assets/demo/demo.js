@@ -15,33 +15,28 @@ demo = {
     });
   },
 
-  generateDataSetsArray: function(data){
+  generateLabelAndDataSetArrays: function(dataArray){
+    let timeLabels = [];
     let dataSets = [];
-    for(var prop in data){
-      let numberOfFields = Object.keys(prop).length;
-      dataSet.push({
-        label: "1",
-        borderColor: "#f96332",
-        pointBorderColor: "#FFF",
-        pointBackgroundColor: "#f96332",
-        pointBorderWidth: 2,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 1,
-        pointRadius: 4,
-        fill: true,
-        backgroundColor: gradientFill,
-        borderWidth: 2,
-        data: [prop[1]]
-      })
-    }
-  },
 
-  generateLabelsArray: function(data){
-    let labels;
-    for(var prop in data){
-      labels.push(prop[Object.keys(prop[0])])
-    }
-    return labels;
+    //Loop through every item in the data
+    for(let i = 0; i < dataArray.length; i++){
+      //{datetime, sensorA, sensorB}
+      let copyOfItemData = Object.values(dataArray[i]); //2020, 60, 12
+      let copyOfItemKeys = Object.keys(dataArray[i]) //datetime, sensora, sensorb
+      let dateTime = copyOfItemData.shift(); //2020
+      let count = 0;
+      timeLabels.push(dateTime) //[2020,2021]
+        while(count < copyOfItemData.length){
+          if(i == 0){
+            dataSets.push({label: copyOfItemKeys[count+1], data: [], yAxisID: 'y' + str(count+1)})
+          }
+          dataSets[count].data.push(copyOfItemData[count])
+          count++;
+        }
+      }
+
+      return {timeLabels: timeLabels, dataSets: dataSets}
   },
 
   getKPAChartData: function(){
@@ -107,25 +102,10 @@ demo = {
     gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
 
     let data = $.getJSON( "<insert url endpoint>", function( data ) {
+      let formattedData = this.generateLabelAndDataSetArrays(data)
       return  {
-        labels: this.generateLabelsArray(data),
-        datasets: [{
-          label: "Data",
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#d048b6',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#d048b6',
-          pointBorderColor:'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#d048b6',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          datasets: this.generateDataSetsArray(data),
-        }]
+        labels: formattedData.timeLabels,
+        datasets: formattedData.dataSets
       };
     });
 
