@@ -17,8 +17,11 @@
 
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-
-
+        //Set sidebar attribute for data to color set in storage otherwise it will default to black
+        $sidebar.attr('data', localStorage.getItem('side-bar-color') ? localStorage.getItem('side-bar-color') : 'blue');
+        console.log(localStorage.getItem('background-color') == 'black')
+        localStorage.getItem('background-color') == 'black' ? $('body').removeClass('white-content') && $('body').addClass('black-content') : $('body').removeClass('black-content') && $('body').addClass('white-content')
+    
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -50,6 +53,7 @@
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
+          localStorage.setItem('side-bar-color', new_color);
         });
 
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
@@ -102,11 +106,15 @@
         });
 
         $('.light-badge').click(function() {
+          $('body').removeClass('black-content')
           $('body').addClass('white-content');
+          localStorage.setItem('background-color', 'white')
         });
 
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
+          $('body').addClass('black-content')
+          localStorage.setItem('background-color', 'black')
         });
       });
     });
