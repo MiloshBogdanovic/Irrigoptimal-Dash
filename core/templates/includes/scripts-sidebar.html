@@ -17,11 +17,11 @@
 
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-        //Set sidebar attribute for data to color set in storage otherwise it will default to black
+        //Set sidebar & main panel attribute for data to color set in storage otherwise it will default to black
+        $main_panel.attr('data', localStorage.getItem('side-bar-color') ? localStorage.getItem('side-bar-color') : 'blue');
         $sidebar.attr('data', localStorage.getItem('side-bar-color') ? localStorage.getItem('side-bar-color') : 'blue');
-        console.log(localStorage.getItem('background-color') == 'black')
         localStorage.getItem('background-color') == 'black' ? $('body').removeClass('white-content') && $('body').addClass('black-content') : $('body').removeClass('black-content') && $('body').addClass('white-content')
-    
+
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
