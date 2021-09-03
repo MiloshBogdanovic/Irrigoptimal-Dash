@@ -3,6 +3,14 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
+        if(!localStorage.getItem('background-color')){
+          localStorage.setItem('background-color', 'black')
+        }
+
+        if(!localStorage.getItem('side-bar-color')){
+          localStorage.setItem('side-bar-color', 'blue')
+        }
+        
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
