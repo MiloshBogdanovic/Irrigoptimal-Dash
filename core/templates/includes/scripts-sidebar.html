@@ -3,13 +3,7 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
-        if(!localStorage.getItem('background-color')){
-          localStorage.setItem('background-color', 'black')
-        }
-
-        if(!localStorage.getItem('side-bar-color')){
-          localStorage.setItem('side-bar-color', 'blue')
-        }
+        
         
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
@@ -28,7 +22,7 @@
         //Set sidebar & main panel attribute for data to color set in storage otherwise it will default to black
         $main_panel.attr('data', localStorage.getItem('side-bar-color') ? localStorage.getItem('side-bar-color') : 'blue');
         $sidebar.attr('data', localStorage.getItem('side-bar-color') ? localStorage.getItem('side-bar-color') : 'blue');
-        localStorage.getItem('background-color') == 'black' ? $('body').removeClass('white-content') && $('body').addClass('black-content') : $('body').removeClass('black-content') && $('body').addClass('white-content')
+        
 
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {

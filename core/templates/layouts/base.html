@@ -47,6 +47,19 @@
 </head>
 
 <body class="">
+  <script>
+    if(!localStorage.getItem('background-color')){
+      localStorage.setItem('background-color', 'black')
+    }
+
+    if(!localStorage.getItem('side-bar-color')){
+      localStorage.setItem('side-bar-color', 'blue')
+    }
+    console.log(document.getElementById('sidebar'))
+    localStorage.getItem('background-color') == 'black' ? document.body.className = 'black-content' : document.body.className = 'white-content';
+    
+  </script>
+
   <div class="wrapper">
 
     {% include 'includes/sidebar.html' %}
